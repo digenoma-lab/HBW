@@ -1,0 +1,39 @@
+:::: Simulation parameters :::
+
+Simulated by stochastic model.
+
+prefix : matONT.R94.30X
+id-prefix : M
+depth : 30.000000
+length-mean : 9000.000000
+length-sd : 7000.000000
+length-min : 1000
+length-max : 1000000
+accuracy-mean : 0.850000
+accuracy-min : 0.750000
+accuracy-max : 1.000000
+difference-ratio : 6:54:40
+seed : 1666131174
+
+:::: Reference stats ::::
+
+file name : maternal.fasta
+
+ref.1 (len:4936576) : CP007442.1 Escherichia coli ACN001, complete genome
+
+:::: Simulation stats (ref.1) ::::
+
+read num. : 15899
+depth : 30.000000
+read length mean (SD) : 9314.880181 (6826.279780)
+read length min : 1001
+read length max : 63574
+read accuracy mean (SD) : 0.849393 (0.042766)
+substitution rate. : 0.009069
+insertion rate. : 0.081607
+deletion rate. : 0.060251
+
+:::: System utilization ::::
+
+CPU time(s) : 7
+Elapsed time(s) : 7
