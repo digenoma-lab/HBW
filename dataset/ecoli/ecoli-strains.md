@@ -2,7 +2,7 @@
 
 genomic data was downloaded from [NCBI](https://www.ncbi.nlm.nih.gov/genome/browse#!/prokaryotes/167/). 
 
-The idea is to select a pair of e.coli strains in order to serve as paternal and maternal data based on genome identity.
+The idea is to select four e.coli strains in order to build paternal, maternal, and kids haplotypes.
 
 ## E.coli strains 2003-3014 and F1 E4
 
@@ -113,19 +113,19 @@ TotalSNPs                      51001                51001
 ### genome plot (mummerplot)
 ![](plots/image2.png)<!-- -->
 
-## E.coli strains APEC O78 and ACN001 
+## E.coli strains APEC O78 and ACN001 (paternal haplotypes)
 
 Average identity **99.9** no SVs 
 
-- Escherichia coli APEC O78 (CP004009) maternal
-- Escherichia coli ACN001 (CP007442.1) paternal
+- Escherichia coli APEC O78 (CP004009) paternal A
+- Escherichia coli ACN001 (CP007442.1) paternal B
  
  
 ###  whole genome comparison alignment (dnadiff)
 
 
 ```
-                               [CP004009.1]       [CP004009]
+                               [CP004009.1]       [CP007442.1]
 [Sequences]
 TotalSeqs                          1                    1
 AlignedSeqs               1(100.00%)           1(100.00%)
@@ -170,6 +170,125 @@ TotalSNPs                       1755                 1755
 ![](plots/image3.png)<!-- -->
 
 
+## E.coli strains BW2952 and ER2796 (maternal haplotypes)
+
+Average identity **99.98** no SVs 
+
+- Escherichia coli BW2952 (CP001396.1) maternal A
+- Escherichia coli ER2796 (CP009644.1) maternal B
+ 
+###  whole genome comparison alignment (dnadiff)
+
+```
+                               [REF]                [QRY]
+[Sequences]
+TotalSeqs                          1                    1
+AlignedSeqs               1(100.00%)           1(100.00%)
+UnalignedSeqs               0(0.00%)             0(0.00%)
+
+[Bases]
+TotalBases                   4558663              4578159
+AlignedBases         4449275(97.60%)      4454615(97.30%)
+UnalignedBases         109388(2.40%)        123544(2.70%)
+
+[Alignments]
+1-to-1                            36                   36
+TotalLength                  4459752              4459776
+AvgLength                  123882.00            123882.67
+AvgIdentity                    99.98                99.98
+
+M-to-M                            71                   71
+TotalLength                  4498678              4498744
+AvgLength                   63361.66             63362.59
+AvgIdentity                    99.97                99.97
+
+[Feature Estimates]
+Breakpoints                      140                  140
+Relocations                       14                   11
+Translocations                     0                    0
+Inversions                         4                    4
+
+Insertions                        29                   39
+InsertionSum                  125749               146684
+InsertionAvg                 4336.17              3761.13
+
+TandemIns                          0                    3
+TandemInsSum                       0                  394
+TandemInsAvg                    0.00               131.33
+
+[SNPs]
+TotalSNPs                        621                  621
+```
+
+### genome plot (mummerplot)
+![](plots/image4.png)<!-- -->
+
+
+## E.coli strains BW2952 and ACN001 (kids haplotypes)
+
+Average identity **98.61** no SVs 
+
+- Escherichia coli BW2952 (CP001396.1) kid A (maternal)
+- Escherichia coli ACN001 (CP007442.1) Kid B (paternal)
+
+###  whole genome comparison alignment (dnadiff)
+
+```
+                               [CP007442.1]     [CP001396.1]
+[Sequences]
+TotalSeqs                          1                    1
+AlignedSeqs               1(100.00%)           1(100.00%)
+UnalignedSeqs               0(0.00%)             0(0.00%)
+
+[Bases]
+TotalBases                   4936576              4578159
+AlignedBases         4307594(87.26%)      4304120(94.01%)
+UnalignedBases        628982(12.74%)        274039(5.99%)
+
+[Alignments]
+1-to-1                           261                  261
+TotalLength                  4275550              4275733
+AvgLength                   16381.42             16382.12
+AvgIdentity                    98.67                98.67
+
+M-to-M                           379                  379
+TotalLength                  4368316              4368589
+AvgLength                   11525.90             11526.62
+AvgIdentity                    98.61                98.61
+
+[Feature Estimates]
+Breakpoints                      757                  757
+Relocations                       73                   50
+Translocations                     0                    0
+Inversions                        28                   28
+
+Insertions                       250                  284
+InsertionSum                  676950               322221
+InsertionAvg                 2707.80              1134.58
+
+TandemIns                          5                    5
+TandemInsSum                     691                  783
+TandemInsAvg                  138.20               156.60
+
+[SNPs]
+TotalSNPs                      51994                51994
+```
+
+### genome plot (mummerplot)
+![](plots/image5.png)<!-- -->
+
 # Conclusion
 
-The pair of E.coli strains APEC 078 and ACN001 are the ones with the highest identity (99,9%), which is similar to the one expected for paternal/maternal data of human genomes.
+The strains selected to represent paternal, maternal, and kids haplotypes are:
+
+1. Maternal Haplotypes (99.98% identity)
+	- Escherichia coli BW2952 (CP001396.1) maternal A
+	- Escherichia coli ER2796 (CP009644.1) maternal B
+
+2. Paternal Haplotypes (99.9% identity)
+	- Escherichia coli APEC O78 (CP004009) paternal A
+	- Escherichia coli ACN001 (CP007442.1) paternal B
+	
+3. kids haplotypes (98.61% identity)
+	- Escherichia coli BW2952 (CP001396.1) kid A (maternal)
+	- Escherichia coli ACN001 (CP007442.1) Kid B (paternal)
