@@ -46,3 +46,9 @@ The short-read data was simulated using ***wgsim***.
 	- long-reads/kidONT.R103.30X.p2.fasta.gz
 
 the long-read data was simulated using ***pbsim2***
+
+### Software
+
+  3. pbsim2                     2.0.1         hcd10b59_1          bioconda
+  4. seqtk                      1.3           h1f540d2_4          bioconda 
+  5. wgsim                      1.0           ha92aebf_2          bioconda 

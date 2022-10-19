@@ -292,3 +292,8 @@ The strains selected to represent paternal, maternal, and kids haplotypes are:
 3. kids haplotypes (98.61% identity)
 	- Escherichia coli BW2952 (CP001396.1) kid A (maternal)
 	- Escherichia coli ACN001 (CP007442.1) Kid B (paternal)
+
+### Software
+
+  1. mummer                     3.23          8                   bioconda
+  2. gnuplot                    5.4.5         h62d52a3_0          conda-forge
