@@ -1,0 +1,28 @@
+Reading k-mers in uk15/hapA_only_kmers.txt...
+Found 1348958 18-mers in uk15/hapA_only_kmers.txt.
+Creating hash...
+0/1348958 (0%) done in 0.000036s
+134896/1348958 (10%) done in 0.030345s
+269792/1348958 (20%) done in 0.026419s
+404688/1348958 (30%) done in 0.026896s
+539584/1348958 (40%) done in 0.027052s
+674480/1348958 (50%) done in 0.026765s
+809376/1348958 (60%) done in 0.022785s
+944272/1348958 (70%) done in 0.022643s
+1079168/1348958 (80%) done in 0.023024s
+1214064/1348958 (90%) done in 0.023301s
+Done!
+Reading k-mers in uk15/hapB_only_kmers.txt...
+Found 963463 18-mers in uk15/hapB_only_kmers.txt.
+Creating hash...
+0/963463 (0%) done in 0.000017s
+96347/963463 (10%) done in 0.016324s
+192694/963463 (20%) done in 0.015189s
+289041/963463 (30%) done in 0.014777s
+385388/963463 (40%) done in 0.014238s
+481735/963463 (50%) done in 0.014982s
+578082/963463 (60%) done in 0.014871s
+674429/963463 (70%) done in 0.015268s
+770776/963463 (80%) done in 0.016169s
+867123/963463 (90%) done in 0.015960s
+Done!
