@@ -1,5 +1,7 @@
 # Ecoli Strains selection
 
+[TOC]
+
 genomic data was downloaded from [NCBI](https://www.ncbi.nlm.nih.gov/genome/browse#!/prokaryotes/167/). 
 
 The idea is to select four e.coli strains in order to build paternal, maternal, and kids haplotypes.
