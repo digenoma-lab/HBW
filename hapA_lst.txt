@@ -1,0 +1,4 @@
+dataset/simulated_data/trio_data/unique-mers/uk15/hapA_only_kmers.txt
+dataset/simulated_data/trio_data/unique-mers/uk18/hapA_only_kmers.txt
+dataset/simulated_data/trio_data/unique-mers/uk21/hapA_only_kmers.txt
+dataset/simulated_data/trio_data/unique-mers/uk24/hapA_only_kmers.txt
