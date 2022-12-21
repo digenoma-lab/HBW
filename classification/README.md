@@ -41,4 +41,9 @@ hb_k24_cov  = coverage 24-mer of target sequecne haplotype B
 ```
 
 The file ***kidONT.R94.kmers.uniq.txt*** contains the same columns as above but for unique k-mers.
+
+##  real class
+
+The reads starting with name  K1 are haplotype B and reads staring with K2 are haplotye A.
+
  
