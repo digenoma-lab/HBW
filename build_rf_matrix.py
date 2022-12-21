@@ -57,10 +57,15 @@ if ksizesA != ksizesB:
 
 
 #Step2: we load the long-read fastq compressed file
-out=open(sys.argv[4],"w")
-header="id ha_k15 hb_k15 ha_k18 hb_k18 ha_k21 hb_k21 ha_k24 hb_k24 ha_k15_mean ha_k15_std ha_k15_cov hb_k15_mean hb_k15_std hb_k15_cov ha_k18_mean ha_k18_std ha_k18_cov hb_k18_mean hb_k18_std hb_k18_cov ha_k21_mean ha_k21_std ha_k21_cov hb_k21_mean hb_k21_std hb_k21_cov ha_k24_mean ha_k24_std ha_k24_cov hb_k24_mean hb_k24_std hb_k24_cov uha_k15 uhb_k15 uha_k18 uhb_k18 uha_k21 uhb_k21 uha_k24 uhb_k24 uha_k15_mean uha_k15_std uha_k15_cov uhb_k15_mean uhb_k15_std uhb_k15_cov uha_k18_mean uha_k18_std uha_k18_cov uhb_k18_mean uhb_k18_std uhb_k18_cov uha_k21_mean uha_k21_std uha_k21_cov uhb_k21_mean uhb_k21_std uhb_k21_cov uha_k24_mean uha_k24_std uha_k24_cov uhb_k24_mean uhb_k24_std uhb_k24_cov"
+out1=open(sys.argv[4],"w")
+out2=open(sys.argv[4]+".uniq","w")
 
-print(header,file=out)
+header1="id ha_k15 hb_k15 ha_k18 hb_k18 ha_k21 hb_k21 ha_k24 hb_k24 ha_k15_mean ha_k15_std ha_k15_cov hb_k15_mean hb_k15_std hb_k15_cov ha_k18_mean ha_k18_std ha_k18_cov hb_k18_mean hb_k18_std hb_k18_cov ha_k21_mean ha_k21_std ha_k21_cov hb_k21_mean hb_k21_std hb_k21_cov ha_k24_mean ha_k24_std ha_k24_cov hb_k24_mean hb_k24_std hb_k24_cov"
+
+header2="id uha_k15 uhb_k15 uha_k18 uhb_k18 uha_k21 uhb_k21 uha_k24 uhb_k24 uha_k15_mean uha_k15_std uha_k15_cov uhb_k15_mean uhb_k15_std uhb_k15_cov uha_k18_mean uha_k18_std uha_k18_cov uhb_k18_mean uhb_k18_std uhb_k18_cov uha_k21_mean uha_k21_std uha_k21_cov uhb_k21_mean uhb_k21_std uhb_k21_cov uha_k24_mean uha_k24_std uha_k24_cov uhb_k24_mean uhb_k24_std uhb_k24_cov"
+
+print(header1,file=out1)
+print(header2,file=out2)
 
 with gzip.open(sys.argv[3], "rt") as handle:
  for record in SeqIO.parse(handle, "fasta"):
@@ -151,5 +156,6 @@ with gzip.open(sys.argv[3], "rt") as handle:
    index+=1
 
 #Step3: we output the variables per long read
-  print(record.id,*l,*ls,*lw,*lws,file=out)
+  print(record.id,*l,*ls,file=out1)
+  print(record.id,*lw,*lws,file=out2)
 
