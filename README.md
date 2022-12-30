@@ -1,6 +1,6 @@
 # Hybrid Binning Wengan (HBW)
 
-HBW is a repository hold code for implementing trio-based binning and bubble graph approaches to diploid assembly but for hybrid genomic reads and tailored for the [Wengan](https://github.com/adigenova/wengan) assembler.
+HBW is a repository hold code for implementing trio-based binning and bubble graph approaches to diploid assembly but for hybrid genomic datasets and tailored for the [Wengan](https://github.com/adigenova/wengan) assembler.
 
 
 ## trio binning
