@@ -315,6 +315,7 @@ varImpPlot(rf,main="Importance of features")
 we build a consolidate plot by k-mer, random forest and class
 
 ``` r
+library(knitr)
 s=mk15$byClass[,5:7]
 s=rbind(s,mk18$byClass[,5:7])
 s=rbind(s,mk21$byClass[,5:7])
@@ -324,32 +325,44 @@ s=rbind(s,m$byClass[5:7])
 sd=as.data.frame(s)
 sd$k=c(rep(15,3),rep(18,3),rep(21,3),rep(24,3),rep("rf",2))
 sd$class=c(rep(c("Paternal","Maternal","U"),4),c("Paternal","Maternal"))
-sd
+kable(sd,caption = "Precision, recall and F1 for haplotype classifiers")
 ```
 
-    ##               Precision    Recall          F1  k    class
-    ## Class..A   0.9905944319 0.9871899 0.988889237 15 Paternal
-    ## Class..B   0.9863196530 0.9899531 0.988133044 15 Maternal
-    ## Class..U   1.0000000000 1.0000000 1.000000000 15        U
-    ## Class..A.1 0.9953864627 0.9841905 0.989756803 18 Paternal
-    ## Class..B.1 0.9930405405 0.9843938 0.988698285 18 Maternal
-    ## Class..U.1 0.0032154341 1.0000000 0.006410256 18        U
-    ## Class..A.2 0.9970541146 0.9728801 0.984818774 21 Paternal
-    ## Class..B.2 0.9951266388 0.9710650 0.982948575 21 Maternal
-    ## Class..U.2 0.0013333333 1.0000000 0.002663116 21        U
-    ## Class..A.3 0.9968756102 0.9570081 0.976535102 24 Paternal
-    ## Class..B.3 0.9947654941 0.9546551 0.974297628 24 Maternal
-    ## Class..U.3 0.0008045052 1.0000000 0.001607717 24        U
-    ## X          0.9907523119 0.9907523 0.990752312 rf Paternal
-    ## X.1        0.9907523119 0.9907523 0.990752312 rf Maternal
+|            | Precision |    Recall |        F1 | k   | class    |
+|:-----------|----------:|----------:|----------:|:----|:---------|
+| Class..A   | 0.9905944 | 0.9871899 | 0.9888892 | 15  | Paternal |
+| Class..B   | 0.9863197 | 0.9899531 | 0.9881330 | 15  | Maternal |
+| Class..U   | 1.0000000 | 1.0000000 | 1.0000000 | 15  | U        |
+| Class..A.1 | 0.9953865 | 0.9841905 | 0.9897568 | 18  | Paternal |
+| Class..B.1 | 0.9930405 | 0.9843938 | 0.9886983 | 18  | Maternal |
+| Class..U.1 | 0.0032154 | 1.0000000 | 0.0064103 | 18  | U        |
+| Class..A.2 | 0.9970541 | 0.9728801 | 0.9848188 | 21  | Paternal |
+| Class..B.2 | 0.9951266 | 0.9710650 | 0.9829486 | 21  | Maternal |
+| Class..U.2 | 0.0013333 | 1.0000000 | 0.0026631 | 21  | U        |
+| Class..A.3 | 0.9968756 | 0.9570081 | 0.9765351 | 24  | Paternal |
+| Class..B.3 | 0.9947655 | 0.9546551 | 0.9742976 | 24  | Maternal |
+| Class..U.3 | 0.0008045 | 1.0000000 | 0.0016077 | 24  | U        |
+| X          | 0.9909797 | 0.9885029 | 0.9897397 | rf  | Paternal |
+| X.1        | 0.9909797 | 0.9885029 | 0.9897397 | rf  | Maternal |
+
+Precision, recall and F1 for haplotype classifiers
 
 we make the plots
 
 ``` r
 library(patchwork)
-p1=sd %>% filter(class != "U") %>% ggplot(aes(y=Precision, x=factor(k),fill=class)) + geom_col(position="dodge2") +xlab("k-mer size")+theme_minimal() +  coord_cartesian(ylim = c(0.9, 1))
-p2=sd %>% filter(class != "U") %>% ggplot(aes(y=Recall, x=factor(k),fill=class)) + geom_col(position="dodge2")  + xlab("k-mer size")+ theme_minimal()
-p1+p2+plot_layout(guides = 'collect')+ coord_cartesian(ylim = c(0.9, 1))
+p1=sd %>% filter(class != "U") %>% ggplot(aes(y=Precision, x=factor(k),fill=class)) + 
+  geom_col(position="dodge2") +
+  xlab("classifier: k-mer and RF")+
+  theme_minimal() +
+  coord_cartesian(ylim = c(0.8, 1))
+p2=sd %>% filter(class != "U") %>% ggplot(aes(y=Recall, x=factor(k),fill=class)) +
+  geom_col(position="dodge2")  +
+  xlab("classifier: k-mer and RF")+
+  theme_minimal()+ 
+  coord_cartesian(ylim = c(0.8, 1))
+# we merge plots
+p1+p2+plot_layout(guides = 'collect') & theme(text = element_text(size = 20)) 
 ```
 
 ![](TrioRF_files/figure-gfm/plots-1.png)<!-- -->
@@ -370,7 +383,7 @@ devtools::session_info()
     ##  collate  en_US.UTF-8
     ##  ctype    en_US.UTF-8
     ##  tz       Europe/London
-    ##  date     2022-12-28
+    ##  date     2022-12-30
     ##  pandoc   2.19.2 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown)
     ## 
     ## ─ Packages ───────────────────────────────────────────────────────────────────
@@ -426,7 +439,7 @@ devtools::session_info()
     ##  ipred           0.9-13     2022-06-02 [1] CRAN (R 4.2.0)
     ##  iterators       1.0.14     2022-02-05 [1] CRAN (R 4.2.0)
     ##  jsonlite        1.8.4      2022-12-06 [1] CRAN (R 4.2.0)
-    ##  knitr           1.41       2022-11-18 [1] CRAN (R 4.2.0)
+    ##  knitr         * 1.41       2022-11-18 [1] CRAN (R 4.2.0)
     ##  labeling        0.4.2      2020-10-20 [1] CRAN (R 4.2.0)
     ##  later           1.3.0      2021-08-18 [1] CRAN (R 4.2.0)
     ##  lattice       * 0.20-45    2021-09-22 [1] CRAN (R 4.2.2)

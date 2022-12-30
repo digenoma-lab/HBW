@@ -126,7 +126,7 @@ rf <- randomForest(
 ```
 ### model evaluation
 
-```{r randomeval}
+```{r randomeval, fig.width=6, fig.height=6}
 #we make the predictions
 pred = predict(rf, newdata=test)
 m=confusionMatrix(pred, test$class)
@@ -136,7 +136,7 @@ varImpPlot(rf,main="Importance of features")
 we build a consolidate plot by k-mer, random forest and class
 
 ```{r code}
-
+library(knitr)
 s=mk15$byClass[,5:7]
 s=rbind(s,mk18$byClass[,5:7])
 s=rbind(s,mk21$byClass[,5:7])
@@ -146,16 +146,25 @@ s=rbind(s,m$byClass[5:7])
 sd=as.data.frame(s)
 sd$k=c(rep(15,3),rep(18,3),rep(21,3),rep(24,3),rep("rf",2))
 sd$class=c(rep(c("Paternal","Maternal","U"),4),c("Paternal","Maternal"))
-sd
+kable(sd,caption = "Precision, recall and F1 for haplotype classifiers")
 ```
 
 we make the plots
 
-```{r plots}
+```{r plots, fig.width=10, fig.height=6}
 library(patchwork)
-p1=sd %>% filter(class != "U") %>% ggplot(aes(y=Precision, x=factor(k),fill=class)) + geom_col(position="dodge2") +xlab("k-mer size")+theme_minimal() +  coord_cartesian(ylim = c(0.9, 1))
-p2=sd %>% filter(class != "U") %>% ggplot(aes(y=Recall, x=factor(k),fill=class)) + geom_col(position="dodge2")  + xlab("k-mer size")+ theme_minimal()
-p1+p2+plot_layout(guides = 'collect')+ coord_cartesian(ylim = c(0.9, 1))
+p1=sd %>% filter(class != "U") %>% ggplot(aes(y=Precision, x=factor(k),fill=class)) + 
+  geom_col(position="dodge2") +
+  xlab("classifier: k-mer and RF")+
+  theme_minimal() +
+  coord_cartesian(ylim = c(0.8, 1))
+p2=sd %>% filter(class != "U") %>% ggplot(aes(y=Recall, x=factor(k),fill=class)) +
+  geom_col(position="dodge2")  +
+  xlab("classifier: k-mer and RF")+
+  theme_minimal()+ 
+  coord_cartesian(ylim = c(0.8, 1))
+# we merge plots
+p1+p2+plot_layout(guides = 'collect') & theme(text = element_text(size = 20)) 
 
 ```
 
